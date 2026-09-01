@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   ArrowDownRight, ArrowRight, Building2, Check, Clock3, Factory, Gauge,
@@ -90,9 +91,9 @@ export default function HomePage() {
   return (
     <main className="site-shell">
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="Теплоконтур — на главную">
+        <a className="brand" href="#top" aria-label="Теплодом38 — на главную">
           <span className="brand-mark"><Layers3 size={22} strokeWidth={2.4} /></span>
-          <span>ТЕПЛОКОНТУР</span>
+          <span>Теплодом38</span>
         </a>
         <nav className="desktop-nav" aria-label="Основная навигация">
           <a href="#advantages">Преимущества</a><a href="#applications">Объекты</a>
@@ -120,14 +121,6 @@ export default function HomePage() {
             <div className="eyebrow"><span /> Утепление напыляемым ППУ</div>
             <h1>Сохраняем тепло<br /><span>без швов</span> и лишних слоёв</h1>
             <p className="hero-lead">Профессионально утепляем дома, ангары и промышленные объекты. Подбираем толщину под конструкцию и климат, работаем под ключ.</p>
-            <div className="hero-buttons">
-              <Button asChild className="yellow-button hero-button"><a href="#calculator">Получить расчёт <ArrowRight /></a></Button>
-              <a className="text-link" href="#advantages">Почему ППУ <ArrowDownRight size={18} /></a>
-            </div>
-          </div>
-          <div className="hero-note">
-            <div className="hero-note-icon"><ThermometerSun /></div>
-            <div><strong>Один слой — три задачи</strong><span>Тепло · тишина · защита от влаги</span></div>
           </div>
         </div>
         <div className="hero-stats section-wrap">
@@ -215,11 +208,13 @@ export default function HomePage() {
       </section>
 
       <footer className="footer"><div className="section-wrap footer-grid">
-        <div><a className="brand footer-brand" href="#top"><span className="brand-mark"><Layers3 size={22} /></span><span>ТЕПЛОКОНТУР</span></a><p>Концепт лендинга для компании по утеплению пенополиуретаном.</p></div>
-        <div className="footer-contact"><span>Телефон</span><a href="tel:+70000000000">+7 000 000-00-00</a></div>
-        <div className="footer-contact"><span>Регион работы</span><strong>Ваш город и область</strong></div>
-        <div className="footer-contact"><span>Режим работы</span><strong>Пн–Сб · 09:00–19:00</strong></div>
-      </div><div className="section-wrap footer-bottom"><span>© 2026 Теплоконтур</span><span>Демонстрационный дизайн-концепт</span></div></footer>
+        <div><a className="brand footer-brand" href="#top"><span className="brand-mark"><Layers3 size={22} /></span><span>Теплодом38</span></a><p>Концепт лендинга для компании по утеплению пенополиуретаном.</p></div>
+          <div className="footer-contact"><span>Телефон</span><a href="tel:+70000000000">+7 000 000-00-00</a></div>
+          <div className="footer-contact"><span>Регион работы</span><strong>Ваш город и область</strong></div>
+          <div className="footer-contact"><span>Режим работы</span><strong>Пн–Сб · 09:00–19:00</strong></div>
+        </div>
+        <div className="section-wrap footer-bottom"><span>© 2026 Теплодом38</span><Link href="/privacy" className="privacy-link">Политика конфиденциальности</Link></div>
+      </footer>
     </main>
   );
 }

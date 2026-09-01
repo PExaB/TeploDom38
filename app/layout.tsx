@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Теплодом38",
-  description: "Концепт современного сайта услуг по утеплению домов и промышленных объектов напыляемым ППУ.",
+  description: "Утепление домов и промышленных объектов напыляемым ППУ",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 
