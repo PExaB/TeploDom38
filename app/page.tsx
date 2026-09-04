@@ -165,7 +165,7 @@ export default function HomePage() {
             <div className="field"><label htmlFor="city">Город или район</label><Input id="city" name="city" autoComplete="address-level2" placeholder="Например, Иркутск" /></div>
             <div className="field">
               <label htmlFor="workType">Что нужно утеплить</label>
-                <select id="workType" name="workType" defaultValue="">
+                <select id="workType" name="workType" defaultValue="" required>
                   <option value="" disabled>Выберите конструкцию</option>
                   <option>Стены</option>
                   <option>Пол или перекрытия</option>

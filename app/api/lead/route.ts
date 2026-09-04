@@ -13,13 +13,20 @@ const optionalNumber = (min: number, max: number) => z.preprocess(
 
 const leadSchema = z.object({
   name: z.string().trim().min(2, "Укажите имя").max(80),
+
   phone: z.string().trim().min(7, "Укажите телефон").max(30),
-  city: optionalText(120),
-  workType: optionalText(120),
-  area: optionalNumber(1, 10_000),
-  thickness: optionalNumber(1, 1_000),
-  message: optionalText(2_000),
-  website: z.string().optional().default(""),
+
+  city: optionalText(100),
+
+  workType: optionalText(100),
+
+  area: optionalNumber(1, 10000),
+
+  thickness: optionalNumber(1, 1000),
+
+  message: optionalText(1000),
+
+  website: optionalText(100),
 });
 
 function escapeHtml(value: string) {
