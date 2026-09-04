@@ -1,0 +1,1682 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+
+/* =========================================================
+   Переменные и цвета
+   ========================================================= */
+
+:root {
+  --ink: #171a15;
+  --ink-soft: #252a21;
+  --paper: #f3f0e7;
+  --surface: #ebe7dc;
+  --white: #fff;
+  --acid: #d8ff43;
+  --acid-dark: #bddd30;
+  --forest: #769319;
+  --muted: #6d7168;
+  --line: rgba(23, 26, 21, 0.14);
+  --primary: #171a15;
+  --primary-foreground: #fff;
+  --secondary: #ebe7dc;
+  --secondary-foreground: #171a15;
+  --background: #f3f0e7;
+  --foreground: #171a15;
+  --card: #fff;
+  --card-foreground: #171a15;
+  --popover: #fff;
+  --popover-foreground: #171a15;
+  --muted-foreground: #6d7168;
+  --accent: #d8ff43;
+  --accent-foreground: #171a15;
+  --destructive: #bd3030;
+  --border: rgba(23, 26, 21, 0.16);
+  --input: rgba(23, 26, 21, 0.2);
+  --ring: #90ad21;
+  --radius: 0.8rem;
+}
+
+/* =========================================================
+   Базовые стили
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button, summary, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid var(--acid-dark);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   Общие контейнеры
+   ========================================================= */
+
+.site-shell {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.section-wrap {
+  width: min(1180px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+section[id] {
+  scroll-margin-top: 24px;
+}
+
+.hero-copy,
+.section-heading,
+.technology-copy,
+.technology-list,
+.process-aside,
+.steps,
+.estimate-copy,
+.estimate-card {
+  min-width: 0;
+}
+
+/* =========================================================
+   Шапка и навигация
+   ========================================================= */
+
+.topbar {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 50%;
+  width: min(1180px, calc(100% - 48px));
+  min-height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateX(-50%);
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand-mark {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  background: var(--acid);
+  color: var(--ink);
+  border-radius: 50%;
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.desktop-nav a {
+  transition: color 0.2s ease;
+}
+
+.desktop-nav a:hover {
+  color: white;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.yellow-button {
+  min-height: 46px;
+  padding-inline: 22px !important;
+  background: var(--acid) !important;
+  color: var(--ink) !important;
+  border-radius: 999px !important;
+  font-weight: 850 !important;
+  box-shadow: none !important;
+  transition: 0.2s ease;
+}
+
+.yellow-button:hover {
+  background: var(--acid-dark) !important;
+  transform: translateY(-1px);
+}
+
+.menu-button {
+  display: none;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 76px;
+  left: 0;
+  right: 0;
+  display: grid;
+  padding: 12px;
+  background: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+}
+
+.mobile-nav a {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================================
+   Главный экран
+   ========================================================= */
+
+.hero {
+  position: relative;
+  min-height: max(800px, 100svh);
+  background: var(--ink) url("/house-hero.jpg") center / cover no-repeat;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(23, 26, 21, 0.9) 0%, rgba(23, 26, 21, 0.72) 42%, rgba(23, 26, 21, 0.28) 100%),
+    linear-gradient(0deg, rgba(23, 26, 21, 0.3), rgba(23, 26, 21, 0.3));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+  gap: 60px;
+  align-items: center;
+  padding-top: 142px;
+  padding-bottom: 150px;
+}
+
+.hero-copy {
+  max-width: 690px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrow span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--acid);
+  flex: 0 0 auto;
+}
+
+.eyebrow.dark {
+  color: var(--muted);
+}
+
+.hero h1,
+.section-heading h2,
+.technology-copy h2,
+.process h2,
+.choice-wrap h2,
+.estimate-copy h2,
+.faq h2,
+.final-cta h2 {
+  margin: 0;
+  font-family: "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+  font-weight: 900;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 700px;
+  font-size: clamp(58px, 6.6vw, 98px);
+  line-height: 0.92;
+}
+
+.hero h1 span {
+  color: var(--acid);
+}
+
+.hero-lead {
+  max-width: 650px;
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, 0.73);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.hero-visual {
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 570px;
+  aspect-ratio: 1.05;
+  overflow: hidden;
+  background: #faf9f5;
+  box-shadow: 24px 24px 0 rgba(216, 255, 67, 0.1);
+}
+
+.hero-visual img {
+  object-fit: cover;
+  object-position: 51% bottom;
+}
+
+.hero-visual-label {
+  position: absolute;
+  left: 22px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--acid);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.hero-visual-label svg {
+  width: 23px;
+  height: 23px;
+}
+
+.hero-visual-label strong {
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   Описание материала
+   ========================================================= */
+
+.intro {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px;
+  align-items: end;
+  padding: 110px 0 54px;
+}
+
+.section-heading h2,
+.technology-copy h2,
+.process h2,
+.choice-wrap h2,
+.estimate-copy h2,
+.faq h2,
+.final-cta h2 {
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 0.98;
+}
+
+.material-summary > p, .split-heading > p, .system-heading > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.composition {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.composition div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+}
+
+.composition strong {
+  font-family: "Arial Narrow", Impact, sans-serif;
+  font-size: 32px;
+}
+
+.composition span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   Преимущества
+   ========================================================= */
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 112px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.benefit-card {
+  min-height: 320px;
+  padding: 28px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.benefit-card:hover {
+  background: white;
+  transform: translateY(-5px);
+}
+
+.benefit-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.benefit-top svg {
+  width: 34px;
+  height: 34px;
+  color: var(--forest);
+}
+
+.benefit-top span, .application-number {
+  color: #989c93;
+  font-size: 13px;
+}
+
+.benefit-card h3 {
+  margin: 72px 0 12px;
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.benefit-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   Технология монтажа
+   ========================================================= */
+
+.technology-section {
+  padding: 108px 0;
+  background: var(--ink);
+  color: white;
+}
+
+.technology-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  grid-template-areas: "copy copy" "text visual" "list list";
+  gap: 42px 76px;
+  align-items: start;
+}
+
+.technology-copy {
+  grid-area: copy;
+}
+
+.technology-copy h2 {
+  max-width: 980px;
+  font-size: clamp(38px, 4.55vw, 62px);
+}
+
+.technology-text {
+  grid-area: text;
+  align-self: center;
+  max-width: 460px;
+}
+
+.technology-text p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.75;
+}
+
+.manufacturer-note {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.manufacturer-note svg {
+  flex: 0 0 auto;
+  color: var(--acid);
+}
+
+.technology-visual {
+  grid-area: visual;
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 1.55;
+  overflow: hidden;
+  background: #f7f7f3;
+  border-radius: 8px;
+  box-shadow: 18px 18px 0 rgba(216, 255, 67, 0.08);
+}
+
+.technology-visual img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.technology-list {
+  grid-area: list;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.technology-list article {
+  min-height: 210px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+  padding: 25px;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.technology-list article > span {
+  color: var(--acid);
+  font-size: 12px;
+}
+
+.technology-list h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.technology-list p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   Области применения
+   ========================================================= */
+
+.applications {
+  padding: 112px 0;
+}
+
+.split-heading, .system-heading {
+  display: grid;
+  grid-template-columns: 1.15fr 0.7fr;
+  gap: 80px;
+  align-items: end;
+}
+
+.application-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 54px;
+}
+
+.application-card {
+  position: relative;
+  min-height: 290px;
+  padding: 28px;
+  background: var(--surface);
+  border-right: 6px solid var(--paper);
+  border-bottom: 6px solid var(--paper);
+  overflow: hidden;
+  transition: background 0.25s ease;
+}
+
+.application-card:hover {
+  background: var(--acid);
+}
+
+.application-card > svg:not(.application-arrow) {
+  width: 42px;
+  height: 42px;
+  margin-top: 48px;
+  stroke-width: 1.5;
+}
+
+.application-card h3 {
+  margin: 18px 0 8px;
+  font-size: 20px;
+}
+
+.application-card p {
+  max-width: 270px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.application-card:hover p {
+  color: #3d4418;
+}
+
+.application-arrow {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+}
+
+/* =========================================================
+   Преимущества системы
+   ========================================================= */
+
+.system-section {
+  padding: 108px 0;
+  background: #e7e3d6;
+}
+
+.system-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 52px;
+  border-top: 1px solid var(--line);
+}
+
+.system-grid article {
+  min-height: 250px;
+  padding: 26px 24px 26px 0;
+  border-right: 1px solid var(--line);
+}
+
+.system-grid article + article {
+  padding-left: 24px;
+}
+
+.system-grid article:last-child {
+  border-right: 0;
+}
+
+.system-grid svg {
+  width: 34px;
+  height: 34px;
+  color: var(--forest);
+}
+
+.system-grid h3 {
+  margin: 45px 0 12px;
+  font-size: 18px;
+}
+
+.system-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   Этапы работы
+   ========================================================= */
+
+.process {
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 90px;
+  padding: 112px 0;
+}
+
+.process-aside {
+  align-self: start;
+}
+
+.process-aside > p {
+  max-width: 390px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.process-image {
+  position: relative;
+  aspect-ratio: 1.65;
+  margin-top: 34px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.process-image img {
+  object-fit: cover;
+}
+
+.steps {
+  border-top: 1px solid var(--line);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 56px 1fr 30px;
+  gap: 22px;
+  align-items: start;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.step > span {
+  color: #969a91;
+  font-size: 12px;
+}
+
+.step h3 {
+  margin: 0 0 7px;
+  font-size: 19px;
+}
+
+.step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.step svg {
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  background: var(--acid);
+  color: var(--ink);
+  border-radius: 50%;
+}
+
+/* =========================================================
+   Почему выбирают древесное волокно
+   ========================================================= */
+
+.choice-section {
+  padding: 92px 0;
+  background: var(--ink-soft);
+  color: white;
+}
+
+.choice-wrap {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 80px;
+  align-items: end;
+}
+
+.choice-wrap h2 {
+  font-size: clamp(38px, 4.7vw, 62px);
+}
+
+.choice-wrap > p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* =========================================================
+   Форма расчёта
+   ========================================================= */
+
+.estimate-section {
+  padding: 110px 0;
+  background: #30352a;
+  color: white;
+}
+
+.estimate-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(500px, 1.1fr);
+  gap: 76px;
+  align-items: start;
+}
+
+.estimate-copy > p {
+  max-width: 510px;
+  margin: 26px 0;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.75;
+}
+
+.estimate-checklist {
+  display: grid;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.estimate-checklist div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+}
+
+.estimate-checklist svg {
+  width: 19px;
+  height: 19px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--acid);
+  color: var(--ink);
+}
+
+.estimate-phones {
+  display: grid;
+  gap: 6px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.estimate-phones span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.estimate-phones a {
+  width: fit-content;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.estimate-card {
+  padding: 38px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+}
+
+.estimate-card select option {
+  background: #ffffff;
+  color: #151711;
+}
+
+.lead-form {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field-wide {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.field input, .field select, .field textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  box-shadow: none;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: rgba(216, 255, 67, 0.72);
+  background: rgba(255, 255, 255, 0.12);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(216, 255, 67, 0.14);
+}
+
+.field textarea {
+  min-height: 108px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.field input::placeholder, .field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.field select {
+  color-scheme: dark;
+}
+
+.submit-button {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 2px;
+  box-shadow: 0 12px 28px rgba(119, 147, 25, 0.2) !important;
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
+.form-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.privacy-note {
+  margin: 13px 2px 0;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.privacy-note a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 2px 0;
+  color: var(--acid);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.success-message svg {
+  width: 18px;
+}
+
+.error-message {
+  margin: 16px 2px 0;
+  color: #ffb2a8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   Частые вопросы
+   ========================================================= */
+
+.faq {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  padding: 110px 0;
+}
+
+.faq-heading {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.faq-heading .eyebrow {
+  justify-content: center;
+}
+
+.faq-list {
+  width: 100%;
+  border-top: 1px solid var(--line);
+}
+
+.faq-list details {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-list summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 25px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary span {
+  flex: 0 0 auto;
+  color: var(--forest);
+  font-size: 24px;
+  font-weight: 400;
+  transition: transform 0.2s ease;
+}
+
+.faq-list details[open] summary span {
+  transform: rotate(45deg);
+}
+
+.faq-list p {
+  max-width: 920px;
+  margin: -5px 72px 24px 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* =========================================================
+   Финальный призыв
+   ========================================================= */
+
+.final-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 88px 0;
+}
+
+.final-cta h2 {
+  max-width: 820px;
+}
+
+.final-cta p {
+  max-width: 650px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.dark-button {
+  flex: 0 0 auto;
+  min-height: 56px;
+  padding-inline: 25px !important;
+  background: var(--ink) !important;
+  color: white !important;
+  border-radius: 999px !important;
+}
+
+.dark-button:hover {
+  background: var(--ink-soft) !important;
+  color: var(--acid) !important;
+}
+
+/* =========================================================
+   Подвал
+   ========================================================= */
+
+.footer {
+  padding: 54px 0 26px;
+  background: var(--ink);
+  color: white;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(2, 1fr);
+  gap: 34px;
+}
+
+.footer-brand {
+  margin-bottom: 16px;
+}
+
+.footer-grid p {
+  max-width: 310px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-contact span {
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer-contact a, .footer-contact strong {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 52px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 11px;
+}
+
+.footer-bottom a:hover {
+  color: var(--acid);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* =========================================================
+   Страница политики конфиденциальности
+   ========================================================= */
+
+.privacy-page {
+  min-height: 100vh;
+  padding: 70px 24px 100px;
+  background: var(--paper);
+}
+
+.privacy-wrap {
+  width: min(820px, 100%);
+  margin: 0 auto;
+}
+
+.privacy-back {
+  display: inline-block;
+  margin-bottom: 55px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.privacy-kicker {
+  margin: 0 0 12px;
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.privacy-page h1 {
+  max-width: 760px;
+  margin: 0;
+  font-family: "Arial Narrow", Impact, sans-serif;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -.04em;
+  text-transform: uppercase;
+}
+
+.privacy-date {
+  margin: 20px 0 60px;
+  color: var(--muted);
+}
+
+.privacy-page section {
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+
+.privacy-page h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+
+.privacy-page section p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.privacy-page section a {
+  color: var(--ink);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* =========================================================
+   Адаптивные стили
+   ========================================================= */
+
+@media (min-width: 1600px) {
+  .section-wrap, .topbar {
+    width: min(1360px, calc(100% - 96px));
+  }
+
+  .hero-content {
+    grid-template-columns: minmax(0, 1fr) minmax(520px, 1fr);
+  }
+
+  .hero-visual {
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .phone-link {
+    display: none;
+  }
+
+  .desktop-nav {
+    gap: 20px;
+  }
+
+  .hero-content {
+    gap: 38px;
+  }
+
+  .intro, .split-heading, .system-heading {
+    gap: 52px;
+  }
+
+  .technology-wrap, .estimate-wrap {
+    gap: 56px;
+  }
+
+  .technology-wrap {
+    grid-template-columns: 1fr;
+    grid-template-areas: "copy" "visual" "text" "list";
+  }
+
+  .technology-visual {
+    max-width: 780px;
+  }
+
+  .process, .choice-wrap, .faq {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: grid;
+  }
+
+  .benefit-grid, .technology-list, .system-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .application-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .system-grid article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .system-grid article:nth-child(3) {
+    padding-left: 0;
+  }
+
+  .estimate-wrap {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 38px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+
+  .footer-grid > :last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding-top: 142px;
+    padding-bottom: 170px;
+  }
+
+  .hero-copy {
+    max-width: 760px;
+  }
+
+  .hero h1 {
+    max-width: 760px;
+    font-size: clamp(55px, 10vw, 82px);
+  }
+
+  .hero-visual {
+    justify-self: start;
+    max-width: 760px;
+    aspect-ratio: 1.55;
+  }
+
+  .intro,
+  .split-heading,
+  .system-heading,
+  .technology-wrap,
+  .process,
+  .choice-wrap,
+  .estimate-wrap,
+  .faq {
+    grid-template-columns: 1fr;
+  }
+
+  .intro, .split-heading, .system-heading {
+    gap: 36px;
+  }
+
+  .technology-wrap {
+    grid-template-areas: "copy" "visual" "text" "list";
+  }
+
+  .technology-visual {
+    min-height: 390px;
+  }
+
+  .process {
+    gap: 38px;
+  }
+
+  .process-image {
+    max-width: 680px;
+  }
+
+  .estimate-copy {
+    max-width: 720px;
+  }
+
+  .estimate-card {
+    max-width: 720px;
+  }
+
+  .faq {
+    gap: 34px;
+  }
+
+  .final-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr;
+  }
+
+  .footer-grid > :last-child {
+    display: flex;
+  }
+}
+
+@media (max-width: 760px) {
+  .section-wrap, .topbar {
+    width: min(100% - 30px, 1180px);
+  }
+
+  .topbar {
+    min-height: 72px;
+  }
+
+  .header-cta {
+    display: none !important;
+  }
+
+  .mobile-nav {
+    top: 70px;
+  }
+
+  .hero-content {
+    padding-top: 124px;
+    padding-bottom: 165px;
+  }
+
+  .hero h1 {
+    font-size: clamp(47px, 13vw, 70px);
+  }
+
+  .hero-lead {
+    font-size: 16px;
+  }
+
+  .hero-visual {
+    aspect-ratio: 1.3;
+    box-shadow: 12px 12px 0 rgba(216, 255, 67, 0.1);
+  }
+
+  .hero-visual-label {
+    left: 14px;
+    bottom: 14px;
+  }
+
+  .intro {
+    padding-top: 78px;
+  }
+
+  .section-heading h2,
+  .technology-copy h2,
+  .process h2,
+  .estimate-copy h2,
+  .faq h2,
+  .final-cta h2 {
+    font-size: 42px;
+  }
+
+  .benefit-grid, .technology-list, .application-grid, .system-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-grid {
+    margin-bottom: 80px;
+  }
+
+  .benefit-card {
+    min-height: 260px;
+  }
+
+  .benefit-card h3 {
+    margin-top: 52px;
+  }
+
+  .technology-section, .applications, .system-section, .estimate-section {
+    padding: 80px 0;
+  }
+
+  .technology-list article {
+    min-height: 170px;
+  }
+
+  .application-card {
+    min-height: 250px;
+    border-right: 0;
+  }
+
+  .system-grid article,
+  .system-grid article + article,
+  .system-grid article:nth-child(3) {
+    min-height: 220px;
+    padding: 24px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .process {
+    padding: 80px 0;
+  }
+
+  .choice-section {
+    padding: 76px 0;
+  }
+
+  .lead-form {
+    grid-template-columns: 1fr;
+  }
+
+  .field-wide {
+    grid-column: auto;
+  }
+
+  .estimate-card {
+    padding: 25px;
+  }
+
+  .faq {
+    padding: 80px 0;
+  }
+
+  .final-cta {
+    padding: 70px 0;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 7px;
+  }
+}
+
+@media (max-width: 520px) {
+  .section-wrap, .topbar {
+    width: calc(100% - 24px);
+  }
+
+  .brand {
+    gap: 8px;
+    font-size: 13px;
+    letter-spacing: 0.055em;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .menu-button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .eyebrow {
+    margin-bottom: 18px;
+    font-size: 10px;
+    letter-spacing: 0.13em;
+  }
+
+  .hero-content {
+    padding-top: 112px;
+  }
+
+  .hero h1 {
+    font-size: clamp(43px, 13.5vw, 58px);
+  }
+
+  .hero-lead {
+    margin-top: 22px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .hero-button a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-visual {
+    aspect-ratio: 1.12;
+  }
+
+  .hero-visual-label {
+    max-width: calc(100% - 28px);
+  }
+
+  .intro {
+    padding: 66px 0 40px;
+  }
+
+  .section-heading h2,
+  .technology-copy h2,
+  .process h2,
+  .estimate-copy h2,
+  .faq h2,
+  .final-cta h2 {
+    font-size: clamp(34px, 10.7vw, 42px);
+  }
+
+  .material-summary > p, .split-heading > p, .system-heading > p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .composition {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-card {
+    min-height: 235px;
+    padding: 22px;
+  }
+
+  .benefit-card h3 {
+    margin-top: 42px;
+  }
+
+  .technology-section, .applications, .system-section, .estimate-section {
+    padding: 66px 0;
+  }
+
+  .technology-visual {
+    min-height: 270px;
+  }
+
+  .technology-list article {
+    padding: 21px;
+  }
+
+  .application-grid {
+    margin-top: 38px;
+  }
+
+  .application-card {
+    min-height: 235px;
+    padding: 22px;
+  }
+
+  .step {
+    grid-template-columns: 36px minmax(0, 1fr) 26px;
+    gap: 12px;
+    padding: 23px 0;
+  }
+
+  .step h3 {
+    font-size: 18px;
+  }
+
+  .step p {
+    font-size: 14px;
+  }
+
+  .choice-wrap h2 {
+    font-size: 38px;
+  }
+
+  .estimate-card {
+    padding: 20px;
+  }
+
+  .faq-list summary {
+    font-size: 16px;
+  }
+
+  .faq-list p {
+    margin-right: 18px;
+    font-size: 15px;
+  }
+
+  .dark-button {
+    width: 100%;
+  }
+
+  .dark-button a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer {
+    padding-top: 44px;
+  }
+
+  .footer-bottom {
+    margin-top: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
