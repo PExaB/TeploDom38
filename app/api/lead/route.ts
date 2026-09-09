@@ -13,19 +13,12 @@ const optionalNumber = (min: number, max: number) => z.preprocess(
 
 const leadSchema = z.object({
   name: z.string().trim().min(2, "Укажите имя").max(80),
-
   phone: z.string().trim().min(7, "Укажите телефон").max(30),
-
   city: optionalText(100),
-
   workType: optionalText(100),
-
   area: optionalNumber(1, 10000),
-
   thickness: optionalNumber(1, 1000),
-
   message: optionalText(1000),
-
   website: optionalText(100),
 });
 

@@ -445,7 +445,7 @@ section[id] {
   color: var(--forest);
 }
 
-.benefit-top span, .application-number {
+.application-number {
   color: #989c93;
   font-size: 13px;
 }
@@ -547,16 +547,10 @@ section[id] {
 .technology-list article {
   min-height: 210px;
   display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: 14px;
+  grid-template-columns: 1fr;
   padding: 25px;
   border-right: 1px solid rgba(255, 255, 255, 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.technology-list article > span {
-  color: var(--acid);
-  font-size: 12px;
 }
 
 .technology-list h3 {
@@ -733,7 +727,9 @@ section[id] {
 
 .step > span {
   color: #969a91;
-  font-size: 12px;
+  font-size: 28px;
+  line-height: 1;
+  align-self: center;
 }
 
 .step h3 {
@@ -1435,7 +1431,6 @@ section[id] {
   }
 
   .section-heading h2,
-  .technology-copy h2,
   .process h2,
   .estimate-copy h2,
   .faq h2,
@@ -1589,6 +1584,11 @@ section[id] {
   .faq h2,
   .final-cta h2 {
     font-size: clamp(34px, 10.7vw, 42px);
+  }
+
+  .technology-copy h2 {
+    font-size: clamp(30px, 9vw, 42px);
+    overflow-wrap: anywhere;
   }
 
   .material-summary > p, .split-heading > p, .system-heading > p {

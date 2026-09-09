@@ -126,14 +126,14 @@ export default function HomePage() {
       </section>
 
       <section className="benefit-grid section-wrap" aria-label="Преимущества древесного утеплителя">
-        {benefits.map(({ icon: Icon, number, title, text }) => <article className="benefit-card" key={number}><div className="benefit-top"><Icon /><span>{number}</span></div><h3>{title}</h3><p>{text}</p></article>)}
+        {benefits.map(({ icon: Icon, number, title, text }) => <article className="benefit-card" key={number}><div className="benefit-top"><Icon /></div><h3>{title}</h3><p>{text}</p></article>)}
       </section>
 
       <section className="technology-section" id="technology"><div className="section-wrap technology-wrap">
-        <div className="technology-copy"><div className="eyebrow"><span /> Преимущество задувки</div><h2>Непрерывный теплоизоляционный контур</h2></div>
+        <div className="technology-copy"><div className="eyebrow"><span /> Преимущество задувки</div><h2>Непрерывный теплоизоляци&shy;онный контур</h2></div>
         <div className="technology-text"><p>Плитный утеплитель приходится подрезать и стыковать. Древесное волокно подаётся внутрь конструкции и заполняет сложные участки вокруг стоек, балок и коммуникаций.</p><div className="manufacturer-note"><ShieldCheck /><span>Производитель заявляет отсутствие усадки не менее 50 лет при соблюдении технологии монтажа.</span></div></div>
         <div className="technology-visual"><Image src="/krasinsul-wall.jpg" alt="Слои каркасной стены с древесным утеплителем" fill sizes="(max-width: 900px) 100vw, 48vw" /></div>
-        <div className="technology-list">{technologyPoints.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+        <div className="technology-list">{technologyPoints.map(([title, text]) => <article key={title}><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
       </div></section>
 
       <section className="applications section-wrap" id="applications">
