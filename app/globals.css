@@ -7,32 +7,32 @@
    ========================================================= */
 
 :root {
-  --ink: #171a15;
-  --ink-soft: #252a21;
-  --paper: #f3f0e7;
-  --surface: #ebe7dc;
+  --ink: #252a24;
+  --ink-soft: #353c31;
+  --paper: #f7f4ec;
+  --surface: #efebe2;
   --white: #fff;
   --acid: #d8ff43;
   --acid-dark: #bddd30;
   --forest: #769319;
-  --muted: #6d7168;
-  --line: rgba(23, 26, 21, 0.14);
-  --primary: #171a15;
+  --muted: #697066;
+  --line: rgba(37, 42, 36, 0.14);
+  --primary: #252a24;
   --primary-foreground: #fff;
   --secondary: #ebe7dc;
   --secondary-foreground: #171a15;
-  --background: #f3f0e7;
-  --foreground: #171a15;
+  --background: #f7f4ec;
+  --foreground: #252a24;
   --card: #fff;
-  --card-foreground: #171a15;
+  --card-foreground: #252a24;
   --popover: #fff;
-  --popover-foreground: #171a15;
-  --muted-foreground: #6d7168;
+  --popover-foreground: #252a24;
+  --muted-foreground: #697066;
   --accent: #d8ff43;
   --accent-foreground: #171a15;
   --destructive: #bd3030;
-  --border: rgba(23, 26, 21, 0.16);
-  --input: rgba(23, 26, 21, 0.2);
+  --border: rgba(37, 42, 36, 0.16);
+  --input: rgba(37, 42, 36, 0.2);
   --ring: #90ad21;
   --radius: 0.8rem;
 }
@@ -787,7 +787,7 @@ section[id] {
 
 .estimate-section {
   padding: 110px 0;
-  background: #30352a;
+  background: #41483b;
   color: white;
 }
 
