@@ -7,33 +7,33 @@
    ========================================================= */
 
 :root {
-  --ink: #252a24;
-  --ink-soft: #353c31;
-  --paper: #f7f4ec;
-  --surface: #efebe2;
+  --ink: #243024;
+  --ink-soft: #3d4936;
+  --paper: #ffffff;
+  --surface: #f2eee4;
   --white: #fff;
-  --acid: #d8ff43;
-  --acid-dark: #bddd30;
-  --forest: #769319;
-  --muted: #697066;
-  --line: rgba(37, 42, 36, 0.14);
+  --acid: #7fc928;
+  --acid-dark: #69ad18;
+  --forest: #668f30;
+  --muted: #667064;
+  --line: rgba(36,48,36,.12);
   --primary: #252a24;
   --primary-foreground: #fff;
   --secondary: #ebe7dc;
   --secondary-foreground: #171a15;
-  --background: #f7f4ec;
-  --foreground: #252a24;
-  --card: #fff;
+  --background: #ffffff;
+  --foreground: #243024;
+  --card: #ffffff;
   --card-foreground: #252a24;
   --popover: #fff;
   --popover-foreground: #252a24;
   --muted-foreground: #697066;
-  --accent: #d8ff43;
+  --accent: #c7dc78;
   --accent-foreground: #171a15;
   --destructive: #bd3030;
   --border: rgba(37, 42, 36, 0.16);
   --input: rgba(37, 42, 36, 0.2);
-  --ring: #90ad21;
+  --ring: #789c35;
   --radius: 0.8rem;
 }
 
@@ -260,7 +260,7 @@ section[id] {
   align-items: center;
   gap: 10px;
   margin-bottom: 22px;
-  color: rgba(255, 255, 255, 0.66);
+  color:var(--muted);
   font-size: 12px;
   font-weight: 850;
   letter-spacing: 0.16em;
@@ -468,9 +468,9 @@ section[id] {
    ========================================================= */
 
 .technology-section {
-  padding: 108px 0;
-  background: var(--ink);
-  color: white;
+  padding:108px 0;
+  background:#f5f7f1;
+  color:var(--ink);
 }
 
 .technology-wrap {
@@ -494,11 +494,12 @@ section[id] {
   grid-area: text;
   align-self: center;
   max-width: 460px;
+  color:var(--muted);
 }
 
 .technology-text p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.62);
+    color:var(--muted);
   line-height: 1.75;
 }
 
@@ -509,9 +510,10 @@ section[id] {
   padding: 16px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.72);
   font-size: 13px;
   line-height: 1.55;
+  border-color:var(--line);
+  color:var(--muted);
 }
 
 .manufacturer-note svg {
@@ -528,7 +530,6 @@ section[id] {
   overflow: hidden;
   background: #f7f7f3;
   border-radius: 8px;
-  box-shadow: 18px 18px 0 rgba(216, 255, 67, 0.08);
 }
 
 .technology-visual img {
@@ -540,17 +541,18 @@ section[id] {
   grid-area: list;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
 }
 
 .technology-list article {
   min-height: 210px;
   display: grid;
   grid-template-columns: 1fr;
+  background:white;
   padding: 25px;
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
 }
 
 .technology-list h3 {
@@ -560,7 +562,7 @@ section[id] {
 
 .technology-list p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.55);
+  color:var(--muted);
   font-size: 13px;
   line-height: 1.6;
 }
@@ -759,8 +761,8 @@ section[id] {
 
 .choice-section {
   padding: 92px 0;
-  background: var(--ink-soft);
-  color: white;
+  background:#ffffff;
+  color:var(--ink);
 }
 
 .choice-wrap {
@@ -776,7 +778,7 @@ section[id] {
 
 .choice-wrap > p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.62);
+  color:var(--muted);
   font-size: 16px;
   line-height: 1.75;
 }
@@ -787,8 +789,8 @@ section[id] {
 
 .estimate-section {
   padding: 110px 0;
-  background: #41483b;
-  color: white;
+  background:#f1f5eb;
+  color:var(--ink);
 }
 
 .estimate-wrap {
@@ -801,7 +803,7 @@ section[id] {
 .estimate-copy > p {
   max-width: 510px;
   margin: 26px 0;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--muted);
   line-height: 1.75;
 }
 
@@ -815,7 +817,6 @@ section[id] {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: rgba(255, 255, 255, 0.75);
   font-size: 14px;
 }
 
@@ -832,11 +833,11 @@ section[id] {
   display: grid;
   gap: 6px;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid black;
 }
 
 .estimate-phones span {
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--muted);
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -850,9 +851,17 @@ section[id] {
 
 .estimate-card {
   padding: 38px;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 8px;
+
+  background:white;
+
+  color:var(--ink);
+
+  border:1px solid var(--line);
+
+  border-radius:20px;
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.08);
 }
 
 .estimate-card select option {
@@ -878,7 +887,7 @@ section[id] {
 }
 
 .field label {
-  color: rgba(255, 255, 255, 0.72);
+  color: black;
   font-size: 13px;
   font-weight: 700;
 }
@@ -887,12 +896,12 @@ section[id] {
   width: 100%;
   min-height: 50px;
   padding: 12px 15px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
   box-shadow: none;
   transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  background:#ffffff;
+  color:var(--ink);
+  border:1px solid var(--line);
 }
 
 .field input:focus, .field select:focus, .field textarea:focus {
@@ -909,7 +918,7 @@ section[id] {
 }
 
 .field input::placeholder, .field textarea::placeholder {
-  color: rgba(255, 255, 255, 0.38);
+  color:#9aa097;
 }
 
 .field select {
@@ -1008,7 +1017,7 @@ section[id] {
   padding: 25px 0;
   cursor: pointer;
   list-style: none;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 750;
 }
 
@@ -1019,7 +1028,8 @@ section[id] {
 .faq-list summary span {
   flex: 0 0 auto;
   color: var(--forest);
-  font-size: 24px;
+  font-size: 34px;
+  line-height: 0.8;
   font-weight: 400;
   transition: transform 0.2s ease;
 }
@@ -1653,7 +1663,11 @@ section[id] {
   }
 
   .faq-list summary {
-    font-size: 16px;
+    font-size: 19px;
+  }
+
+  .faq-list summary span {
+    font-size: 30px;
   }
 
   .faq-list p {
