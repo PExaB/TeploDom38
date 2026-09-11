@@ -905,7 +905,7 @@ section[id] {
 }
 
 .field input:focus, .field select:focus, .field textarea:focus {
-  border-color: rgba(216, 255, 67, 0.72);
+  border-color: var(--acid-dark);
   background: rgba(255, 255, 255, 0.12);
   outline: 0;
   box-shadow: 0 0 0 3px rgba(216, 255, 67, 0.14);
@@ -948,15 +948,22 @@ section[id] {
 
 .privacy-note {
   margin: 13px 2px 0;
-  color: rgba(255, 255, 255, 0.46);
+  color: var(--muted);
   font-size: 11px;
   line-height: 1.5;
 }
 
 .privacy-note a {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
   text-decoration: underline;
+  text-decoration-color: var(--muted);          /* цвет линии = ink */
   text-underline-offset: 3px;
+  transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+.privacy-note a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);     /* линия тоже меняет цвет */
 }
 
 .success-message {
