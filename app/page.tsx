@@ -4,7 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import {
-  Layers3, Menu, MessageCircle, Phone, X,
+  Gauge,
+  Layers3,
+  Menu,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+  Wind,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,27 +22,27 @@ const materialFeatures = [
   {
     image: "/images/material/icon-fill.png",
     title: "Заполняет полости без стыков",
-    text: "Древесное волокно распределяется внутри подготовленной конструкции и заполняет пространство вокруг элементов каркаса.",
+    text: "Древесное волокно распределяется внутри подготовленной конструкции и заполняет пространство вокруг элементов каркаса",
   },
   {
     image: "/images/material/icon-moisture.png",
     title: "Помогает регулировать влажность",
-    text: "Волокно способно принимать и отдавать влагу. Вместе с правильно подобранными мембранами это поддерживает комфортный микроклимат.",
+    text: "Волокно способно принимать и отдавать влагу. Вместе с правильно подобранными мембранами это поддерживает комфортный микроклимат",
   },
   {
     image: "/images/material/icon-sound.png",
     title: "Тепло- и звукоизоляция",
-    text: "Плотный слой уменьшает теплопотери и помогает приглушить шум.",
+    text: "Плотный слой уменьшает теплопотери и помогает приглушить шум",
   },
   {
     image: "/images/material/icon-fire.png",
     title: "Защитные свойства",
-    text: "В составе 5% нелетучей огнебиозащиты.",
+    text: "В составе 5% нелетучей огнебиозащиты",
   },
   {
     image: "/images/material/icon-protection.png",
-    title: "Защита от грызунов, насекомых и бактерий.",
-    text: "Защитные добавки предотвращают развитие биологических поражений.",
+    title: "Защита от грызунов, насекомых и бактерий",
+    text: "Защитные добавки предотвращают развитие биологических поражений",
   },
 ];
 
@@ -105,28 +112,28 @@ const services = [
   },
   {
     image: "/images/services/house.jpg",
-    title: "Комплексное домостроение под ключ.",
+    title: "Комплексное домостроение под ключ",
   },
 ];
 
 const systemItems = [
   {
-    image: "/images/system/icon-calculation.png",
+    icon: Gauge,
     title: "Теплотехнический расчёт",
     text: "Определяем необходимую толщину утепления для конкретной конструкции и условий эксплуатации.",
   },
   {
-    image: "/images/system/icon-layer.png",
+    icon: Layers3,
     title: "Активная пароизоляция",
     text: "Подбираем систему мембран и формируем правильный слой защиты со стороны помещения.",
   },
   {
-    image: "/images/system/icon-shield.png",
+    icon: ShieldCheck,
     title: "Герметизация узлов",
     text: "Проклеиваем стыки, швы и примыкания, чтобы создать непрерывный герметичный контур.",
   },
   {
-    image: "/images/system/icon-wind.png",
+    icon: Wind,
     title: "Ветрозащита и вентзазор",
     text: "Защищаем конструкцию снаружи и предусматриваем отвод возможной влаги.",
   },
@@ -170,7 +177,10 @@ export default function HomePage() {
           <span className="brand-mark"><Layers3 size={22} strokeWidth={2.4} /></span><span>Теплодом38</span>
         </a>
         <nav className="desktop-nav" aria-label="Основная навигация">
-          <a href="#material">Материал</a><a href="#applications">Где утепляем</a><a href="#process">Как работаем</a><a href="#estimate">Расчёт</a>
+          <a href="#material">Материал</a>
+          <a href="#comparison">Преимущества</a>
+          <a href="#applications">Применение</a>
+          <a href="#services">Услуги</a>
         </nav>
         <div className="header-actions">
           <a className="phone-link" href="tel:+79646513838"><Phone size={17} /> +7 964 651-38-38</a>
@@ -179,9 +189,14 @@ export default function HomePage() {
           </Button>
           <button className="menu-button" type="button" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}>{menuOpen ? <X /> : <Menu />}</button>
         </div>
-        {menuOpen && <nav className="mobile-nav" aria-label="Мобильная навигация">
-          <a href="#material" onClick={() => setMenuOpen(false)}>Материал</a><a href="#applications" onClick={() => setMenuOpen(false)}>Где утепляем</a><a href="#process" onClick={() => setMenuOpen(false)}>Как работаем</a><a href="#estimate" onClick={() => setMenuOpen(false)}>Рассчитать стоимость</a>
-        </nav>}
+        {menuOpen && (
+          <nav className="mobile-nav" aria-label="Мобильная навигация">
+            <a href="#material" onClick={() => setMenuOpen(false)}>Материал</a>
+            <a href="#comparison" onClick={() => setMenuOpen(false)}>Преимущества</a>
+            <a href="#applications" onClick={() => setMenuOpen(false)}>Применение</a>
+            <a href="#services" onClick={() => setMenuOpen(false)}>Услуги</a>
+          </nav>
+        )}
       </header>
 
       <section className="hero" id="top">
@@ -190,28 +205,28 @@ export default function HomePage() {
 
             <p className="hero-label">Энергоэффективное натуральное утепление</p>
             <h1>ДРЕВЕСНЫМ ВОЛОКНОМ — <span>KRASINSUL</span></h1>
-            <p className="hero-location">в Иркутской области под ключ.</p>
+            <p className="hero-location">в Иркутской области под ключ</p>
 
             <div className="hero-info">
               <div className="hero-info-item">
                 <div className="hero-info-icon">
                   <Image src="/images/hero/hero-house.png" alt="" width={42} height={42}/>
                 </div>
-                <p><strong>Древесное волокно KRASINSUL —</strong>это не просто утеплитель, а элемент системы управления влагой в доме.</p>
+                <p><strong>Древесное волокно KRASINSUL —</strong>это не просто утеплитель, а элемент системы управления влагой в доме</p>
               </div>
 
               <div className="hero-info-item">
                 <div className="hero-info-icon">
                   <Image src="/images/hero/hero-thermal.png" alt="" width={42} height={42}/>
                 </div>
-                <p><strong>Тепловая инерция.</strong>Снижение нагрузки на систему кондиционирования при отоплении и охлаждении. Тем самым экономит электроэнергию.</p>
+                <p><strong>Тепловая инерция.</strong>Снижение нагрузки на систему кондиционирования при отоплении и охлаждении. Тем самым экономит электроэнергию</p>
               </div>
 
               <div className="hero-info-item">
                 <div className="hero-info-icon">
                   <Image src="/images/hero/hero-eco.png" alt="" width={42} height={42}/>
                 </div>
-                <p><strong>Экологичный антипирин —</strong>Без формальдегида, стирола, фталатов.</p>
+                <p><strong>Экологичный антипирин —</strong>Без формальдегида, стирола, фталатов</p>
               </div>
             </div>
           </div>
@@ -246,7 +261,7 @@ export default function HomePage() {
       </section>
 
 
-      <section className="lead-banner" aria-labelledby="lead-banner-title">
+      <section className="lead-banner" aria-labelledby="lead-banner-title" id="estimate">
         <div className="lead-banner__inner">
           <h2 id="lead-banner-title">Узнайте стоимость утепления с работой и материалами</h2>
 
@@ -322,10 +337,10 @@ export default function HomePage() {
                   height={60}
                 />
                 <div>
-                  <h3>Паропроницаемость.</h3>
+                  <h3>Паропроницаемость</h3>
                   <p>
                     Повышает надёжность узлов, снижает вероятность образования
-                    конденсата внутри стены и поддерживает комфортный микроклимат.
+                    конденсата внутри стены и поддерживает комфортный микроклимат
                   </p>
                 </div>
               </div>
@@ -335,7 +350,7 @@ export default function HomePage() {
       </section>
 
 
-      <section className="comparison">
+      <section className="comparison" id="comparison">
         <div className="section-wrap">
           <h2 className="comparison-title">Древесное волокно это — утеплитель который имеет лучшую
             <br />
@@ -417,22 +432,29 @@ export default function HomePage() {
             </div>
 
             <div className="comparison-description">
-              <div className="comparison-house-icon">
-                <Image src="/images/comparison/icon_energy_house.png" alt="" width={70} height={70}/>
-              </div>
+              <div className="comparison-description-top">
+                <div className="comparison-house-icon">
+                  <Image src="/images/comparison/icon_energy_house.png" alt="" width={95} height={95}/>
+                </div>
 
-              <h3>Один из наиболее интересных материалов для энергоэффективного дома</h3>
+                <div className="comparison-description-head">
+                  <h3>Один из наиболее интересных материалов для энергоэффективного дома</h3>
+                  <p className="comparison-description-subtitle">благодаря сочетанию теплоизоляции и высокой теплоёмкости</p>
+                </div>
+              </div>
 
               <div className="comparison-line" />
 
               <div className="comparison-description-text">
                 <div className="comparison-light-icon">
-                  <Image src="/images/comparison/icon_lightbulb.png" alt="" width={70} height={70}/>
+                  <Image src="/images/comparison/icon_lightbulb.png" alt="" width={42} height={42}/>
                 </div>
+
                 <p>
-                  Тепловая инерция помогает ограждающей конструкции сглаживать
-                  перепады температуры. Высокая удельная теплоёмкость древесного
-                  волокна позволяет материалу аккумулировать больше тепловой энергии.
+                  Тепловая инерция помогает ограждающей конструкции сглаживать перепады
+                  температуры. Высокая удельная теплоёмкость древесного волокна позволяет
+                  материалу аккумулировать больше тепловой энергии по сравнению с
+                  материалами с меньшей теплоёмкостью при сопоставимой массе.
                 </p>
               </div>
             </div>
@@ -471,17 +493,17 @@ export default function HomePage() {
             </article>
 
             <div className="applications-visual">
-              <h3>Утепляем весь контур дома</h3>
-
               <div className="applications-house">
-                <Image src="/images/applications/house-contour.png" alt="Утепляем весь контур дома" fill sizes="650px"/>
+                <Image src="/images/applications/house-contour.png" alt="Утепляем весь контур дома" fill sizes="800px"/>
+
+                <h3>Утепляем весь контур дома</h3>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="services">
+      <section className="services" id="services">
         <div className="section-wrap">
 
           <div className="services-header">
@@ -501,7 +523,7 @@ export default function HomePage() {
             {services.map((item) => (
               <article className="services-card" key={item.title}>
                 <div className="services-card-image">
-                  <Image src={item.image} alt={item.title} fill sizes="260px"/>
+                  <Image src={item.image} alt={item.title} fill sizes="460px"/>
                 </div>
 
                 <h3>{item.title}</h3>
@@ -515,7 +537,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="lead-banner" aria-labelledby="lead-banner-title">
+      <section className="lead-banner" aria-labelledby="lead-banner-title" id="estimate">
         <div className="lead-banner__inner">
           <h2 id="lead-banner-title">Закажите комплексный расчет стоимости</h2>
 
@@ -551,35 +573,46 @@ export default function HomePage() {
           <div className="system-header">
             <div className="system-title">
               <span>КОМПЛЕКСНАЯ СИСТЕМА</span>
-              <h2>НЕ ПРОСТО<br />«ЗАДУВАЕМ ВАТУ»</h2>
+              <h2>
+                НЕ ПРОСТО
+                <br />
+                «ЗАДУВАЕМ ВАТУ»
+              </h2>
             </div>
 
             <p className="system-description">
-              Теплоизоляция работает только как часть правильно
-              собранной конструкции. Поэтому расчёт, мембраны и
-              герметизация входят в общую технологию работ.
+              Теплоизоляция работает только как часть правильно собранной конструкции.
+              Поэтому расчёт, мембраны и герметизация входят в общую технологию работ.
             </p>
           </div>
 
-
           <div className="system-items">
-            {systemItems.map((item) => (
-              <article className="system-item" key={item.title}>
-                <div className="system-icon">
-                  <Image src={item.image} alt={item.title} fill sizes="40px"/>
-                </div>
+            {systemItems.map((item) => {
+              const Icon = item.icon;
 
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
+              return (
+                <article className="system-item" key={item.title}>
+                  <div className="system-icon">
+                    <Icon />
+                  </div>
+
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
       <section className="final-cta section-wrap">
-        <div><div className="eyebrow dark">
-            <span /> Есть фотографии объекта?</div><h2>Покажите конструкцию специалисту</h2><p>По фотографиям мы быстрее поймём задачу и зададим точные вопросы для расчёта.</p></div><Button asChild className="dark-button"><a href="#estimate"><MessageCircle /> Оставить заявку</a></Button>
+        <div>
+          <h2>Покажите конструкцию специалисту</h2>
+          <p>По фотографиям мы быстрее поймём задачу и зададим точные вопросы для расчёта</p>
+        </div>
+        <Button asChild className="dark-button">
+          <a href="#estimate"><MessageCircle />Оставить заявку</a>
+          </Button>
       </section>
 
       <footer className="footer">
