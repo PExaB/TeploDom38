@@ -191,6 +191,9 @@ export default function HomePage() {
         </div>
         {menuOpen && (
           <nav className="mobile-nav" aria-label="Мобильная навигация">
+            <a href="tel:+79646513838" className="mobile-phone">
+              <Phone size={18}/>+7 964 651-38-38
+            </a>
             <a href="#material" onClick={() => setMenuOpen(false)}>Материал</a>
             <a href="#comparison" onClick={() => setMenuOpen(false)}>Преимущества</a>
             <a href="#applications" onClick={() => setMenuOpen(false)}>Применение</a>
@@ -264,7 +267,6 @@ export default function HomePage() {
       <section className="lead-banner" aria-labelledby="lead-banner-title" id="estimate">
         <div className="lead-banner__inner">
           <h2 id="lead-banner-title">Узнайте стоимость утепления с работой и материалами</h2>
-
           <p>за 3 минуты по телефону, заполните форму:</p>
 
           <form className="lead-banner__form" onSubmit={handleSubmit}>
@@ -357,48 +359,50 @@ export default function HomePage() {
             <span>тепловую энергию.</span>
           </h2>
 
-          <div className="comparison-table">
-            <div className="comparison-head">
-              <div></div>
+          <div className="comparison-table-scroll">
+            <div className="comparison-table">
+              <div className="comparison-head">
+                <div></div>
 
-              <div className="comparison-material active">
-                <div className="comparison-material-image">
-                  <Image src="/images/comparison/wood-fiber.jpg" alt="Древесное волокно" fill/>
+                <div className="comparison-material active">
+                  <div className="comparison-material-image">
+                    <Image src="/images/comparison/wood-fiber.jpg" alt="Древесное волокно" fill/>
+                  </div>
+                  <span>Древесное волокно</span>
                 </div>
-                <span>Древесное волокно</span>
+
+                <div className="comparison-material">
+                  <div className="comparison-material-image">
+                    <Image src="/images/comparison/mineral-wool.jpg" alt="Минеральная вата" fill/>
+                  </div>
+                  <span>Минеральная вата</span>
+                </div>
+
+                <div className="comparison-material">
+                  <div className="comparison-material-image">
+                    <Image src="/images/comparison/ecowool.jpg" alt="Эковата" fill/>
+                  </div>
+                  <span>Эковата</span>
+                </div>
+
+                <div className="comparison-material">
+                  <div className="comparison-material-image">
+                    <Image src="/images/comparison/xps.jpg" alt="XPS EPS" fill/>
+                  </div>
+                  <span>XPS/EPS</span>
+                </div>
               </div>
 
-              <div className="comparison-material">
-                <div className="comparison-material-image">
-                  <Image src="/images/comparison/mineral-wool.jpg" alt="Минеральная вата" fill/>
+              {comparisonRows.map((row) => (
+                <div className="comparison-row" key={row.title}>
+                  <div>{row.title}</div>
+                  <div className="active">{row.wood}</div>
+                  <div>{row.mineral}</div>
+                  <div>{row.ecowool}</div>
+                  <div>{row.xps}</div>
                 </div>
-                <span>Минеральная вата</span>
-              </div>
-
-              <div className="comparison-material">
-                <div className="comparison-material-image">
-                  <Image src="/images/comparison/ecowool.jpg" alt="Эковата" fill/>
-                </div>
-                <span>Эковата</span>
-              </div>
-
-              <div className="comparison-material">
-                <div className="comparison-material-image">
-                  <Image src="/images/comparison/xps.jpg" alt="XPS EPS" fill/>
-                </div>
-                <span>XPS/EPS</span>
-              </div>
+              ))}
             </div>
-
-            {comparisonRows.map((row) => (
-              <div className="comparison-row" key={row.title}>
-                <div>{row.title}</div>
-                <div className="active">{row.wood}</div>
-                <div>{row.mineral}</div>
-                <div>{row.ecowool}</div>
-                <div>{row.xps}</div>
-              </div>
-            ))}
           </div>
 
           <div className="comparison-info">
@@ -434,7 +438,7 @@ export default function HomePage() {
             <div className="comparison-description">
               <div className="comparison-description-top">
                 <div className="comparison-house-icon">
-                  <Image src="/images/comparison/icon_energy_house.png" alt="" width={95} height={95}/>
+                  <Image src="/images/comparison/icon_energy_house.png" alt="" width={75} height={75}/>
                 </div>
 
                 <div className="comparison-description-head">
@@ -465,17 +469,26 @@ export default function HomePage() {
 
       <section className="applications" id="applications">
         <div className="section-wrap">
-          <h2 className="applications-title">
-            ОДИН МАТЕРИАЛ ДЛЯ ВСЕГО КОНТУРА ДОМА
-          </h2>
+          <h2 className="applications-title">ОДИН МАТЕРИАЛ ДЛЯ ВСЕГО КОНТУРА ДОМА</h2>
 
-          <div className="applications-grid">
+          <div className="applications-grid desktop-applications">
             {applications.slice(0, 4).map((item) => (
               <article className="applications-card" key={item.title}>
                 <div className="applications-card-image">
-                  <Image src={item.image} alt={item.title} fill sizes="260px"/>
+                  <Image  src={item.image} alt={item.title} fill sizes="260px"/>
                 </div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
 
+          <div className="applications-grid tablet-applications">
+            {applications.map((item) => (
+              <article className="applications-card" key={item.title}>
+                <div className="applications-card-image">
+                  <Image  src={item.image} alt={item.title} fill sizes="260px"/>
+                </div>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
@@ -487,7 +500,6 @@ export default function HomePage() {
               <div className="applications-card-image">
                 <Image src={applications[4].image} alt={applications[4].title} fill sizes="260px"/>
               </div>
-
               <h3>{applications[4].title}</h3>
               <p>{applications[4].text}</p>
             </article>
@@ -495,7 +507,6 @@ export default function HomePage() {
             <div className="applications-visual">
               <div className="applications-house">
                 <Image src="/images/applications/house-contour.png" alt="Утепляем весь контур дома" fill sizes="800px"/>
-
                 <h3>Утепляем весь контур дома</h3>
               </div>
             </div>
@@ -505,7 +516,6 @@ export default function HomePage() {
 
       <section className="services" id="services">
         <div className="section-wrap">
-
           <div className="services-header">
             <h2>Нужно не только утепление?</h2>
             <p>
@@ -513,7 +523,6 @@ export default function HomePage() {
               от розничной торговли до комплексного строительства домов под ключ.
             </p>
           </div>
-
 
           <div className="services-background">
             <Image src="/images/services/background-house.png" alt="" fill sizes="100%"/>
@@ -527,20 +536,16 @@ export default function HomePage() {
                 </div>
 
                 <h3>{item.title}</h3>
-
                 <a href="#">Открыть страницу</a>
               </article>
             ))}
-
           </div>
-
         </div>
       </section>
 
       <section className="lead-banner" aria-labelledby="lead-banner-title" id="estimate">
         <div className="lead-banner__inner">
           <h2 id="lead-banner-title">Закажите комплексный расчет стоимости</h2>
-
           <p>Проведем один замер и пришлем несколько предложений</p>
 
           <form className="lead-banner__form" onSubmit={handleSubmit}>
@@ -566,7 +571,7 @@ export default function HomePage() {
           </small>
         </div>
       </section>
-
+      
 
       <section className="system">
         <div className="section-wrap">
