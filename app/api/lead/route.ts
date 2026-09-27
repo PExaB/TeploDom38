@@ -2,7 +2,13 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 const leadSchema = z.object({
-  phone: z.string().trim().min(7, "Укажите телефон").max(30),
+  phone: z
+    .string()
+    .trim()
+    .regex(
+      /^(\+7|8)?[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/,
+      "Введите корректный номер телефона"
+    ),
 });
 
 function escapeHtml(value: string) {

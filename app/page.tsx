@@ -14,7 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { IMaskInput } from "react-imask";
 
 
 
@@ -107,7 +107,7 @@ const applications = [
 
 const services = [
   {
-    image: "/images/services/production.jpg",
+    image: "/images/services/production.png",
     title: "Погонажные изделия для каркасного домостроения и отделки",
   },
   {
@@ -144,29 +144,73 @@ export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [formError, setFormError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [activeForm, setActiveForm] = useState<string | null>(null);
+
+
+  function validatePhone(phone: string) {
+    const cleanPhone = phone.replace(/\D/g, "");
+
+    if (!cleanPhone) {
+      return "Введите номер телефона";
+    }
+    if (cleanPhone.length !== 11) {
+      return "Введите корректный номер телефона";
+    }
+    if (!cleanPhone.startsWith("7") && !cleanPhone.startsWith("8")) {
+      return "Номер должен начинаться с +7 или 8";
+    }
+    return "";
+  }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
+    const formId = form.dataset.form || "";
     const data = new FormData(form);
+    const phone = String(data.get("phone") || "");
+    const validationError = validatePhone(phone);
+
+    if (validationError) {
+      setActiveForm(formId);
+      setPhoneError(validationError);
+      setFormStatus("idle");
+      return;
+    }
+
+    setPhoneError("");
     setFormStatus("sending");
     setFormError("");
 
     try {
       const response = await fetch("/api/lead", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          phone: data.get("phone"),
+          phone,
         }),
       });
+
       const result = await response.json().catch(() => null);
-      if (!response.ok) throw new Error(result?.error || "Не удалось отправить заявку");
+
+      if (!response.ok) {
+        throw new Error(
+          result?.error || "Не удалось отправить заявку"
+        );
+      }
+
       setFormStatus("sent");
       form.reset();
     } catch (error) {
+
       setFormStatus("error");
-      setFormError(error instanceof Error ? error.message : "Не удалось отправить заявку");
+      setFormError(
+        error instanceof Error
+          ? error.message
+          : "Не удалось отправить заявку"
+      );
     }
   }
 
@@ -222,7 +266,7 @@ export default function HomePage() {
                 <div className="hero-info-icon">
                   <Image src="/images/hero/hero-thermal.png" alt="" width={42} height={42}/>
                 </div>
-                <p><strong>Тепловая инерция.</strong>Снижение нагрузки на систему кондиционирования при отоплении и охлаждении. Тем самым экономит электроэнергию</p>
+                <p><strong>Тепловая инерция</strong>Снижение нагрузки на систему кондиционирования при отоплении и охлаждении. Тем самым экономит электроэнергию</p>
               </div>
 
               <div className="hero-info-item">
@@ -269,8 +313,15 @@ export default function HomePage() {
           <h2 id="lead-banner-title">Узнайте стоимость утепления с работой и материалами</h2>
           <p>за 3 минуты по телефону, заполните форму:</p>
 
-          <form className="lead-banner__form" onSubmit={handleSubmit}>
-            <Input type="tel" name="phone" placeholder="Укажите номер телефона" required/>
+          <form className="lead-banner__form" onSubmit={handleSubmit} data-form="top">
+            <div className="lead-banner__field">
+              <IMaskInput mask="+7 (000) 000-00-00" name="phone" type="tel" placeholder="+7 (___) ___-__-__" className="lead-banner__phone" onAccept={() => {setPhoneError(""); setActiveForm(null);}}/>
+              {phoneError && activeForm === "top" && (
+                <span className="lead-banner__field-error">
+                  {phoneError}
+                </span>
+              )}
+            </div>
 
             <Button type="submit" className="lead-banner__button" disabled={formStatus === "sending"}>
               {formStatus === "sending"
@@ -543,13 +594,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="lead-banner" aria-labelledby="lead-banner-title" id="estimate">
+      <section className="lead-banner" aria-labelledby="lead-banner-title-bottom">
         <div className="lead-banner__inner">
-          <h2 id="lead-banner-title">Закажите комплексный расчет стоимости</h2>
+          <h2 id="lead-banner-title-bottom">Закажите комплексный расчет стоимости</h2>
           <p>Проведем один замер и пришлем несколько предложений</p>
 
-          <form className="lead-banner__form" onSubmit={handleSubmit}>
-            <Input type="tel" name="phone" placeholder="Укажите номер телефона" required/>
+          <form className="lead-banner__form" onSubmit={handleSubmit} data-form="bottom">
+            <div className="lead-banner__field">
+              <IMaskInput mask="+7 (000) 000-00-00" name="phone" type="tel" placeholder="+7 (___) ___-__-__" className="lead-banner__phone" onAccept={() => { setPhoneError(""); setActiveForm(null);}}/>
+              {phoneError && activeForm === "bottom" &&(
+                <span className="lead-banner__field-error">
+                  {phoneError}
+                </span>
+              )}
+            </div>
 
             <Button type="submit" className="lead-banner__button" disabled={formStatus === "sending"}>
               {formStatus === "sending"
@@ -627,7 +685,7 @@ export default function HomePage() {
               <span className="brand-mark"><Layers3 size={22} /></span>
               <span>Теплодом38</span>
             </a>
-            <p>Комплексное утепление домов натуральным задувным древесным волокном.</p>
+            <p>Комплексное утепление домов натуральным задувным древесным волокном</p>
           </div>
           <div className="footer-contact">
             <span>Телефон</span>
