@@ -259,21 +259,21 @@ export default function HomePage() {
                 <div className="hero-info-icon">
                   <Image src="/images/hero/hero-house.png" alt="" width={42} height={42}/>
                 </div>
-                <p><strong>Древесное волокно KRASINSUL —</strong>это не просто утеплитель, а элемент системы управления влагой в доме</p>
+                <p><strong>Древесное волокно KRASINSUL — </strong>это не просто утеплитель, а элемент системы управления влагой в доме</p>
               </div>
 
               <div className="hero-info-item">
                 <div className="hero-info-icon">
                   <Image src="/images/hero/hero-thermal.png" alt="" width={42} height={42}/>
                 </div>
-                <p><strong>Тепловая инерция</strong>Снижение нагрузки на систему кондиционирования при отоплении и охлаждении. Тем самым экономит электроэнергию</p>
+                <p><strong>Тепловая инерция — </strong>Снижение нагрузки на систему кондиционирования при отоплении и охлаждении. Тем самым экономит электроэнергию</p>
               </div>
 
               <div className="hero-info-item">
                 <div className="hero-info-icon">
                   <Image src="/images/hero/hero-eco.png" alt="" width={42} height={42}/>
                 </div>
-                <p><strong>Экологичный антипирин —</strong>Без формальдегида, стирола, фталатов</p>
+                <p><strong>Экологичный антипирин — </strong>Без формальдегида, стирола, фталатов</p>
               </div>
             </div>
           </div>
@@ -407,7 +407,7 @@ export default function HomePage() {
         <div className="section-wrap">
           <h2 className="comparison-title">Древесное волокно это — утеплитель который имеет лучшую
             <br />
-            <span>тепловую энергию.</span>
+            <span>тепловую энергию</span>
           </h2>
 
           <div className="comparison-table-scroll">
@@ -658,9 +658,11 @@ export default function HomePage() {
                   <div className="system-icon">
                     <Icon />
                   </div>
-
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
+                  
+                  <div className="system-item-content">
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
                 </article>
               );
             })}
