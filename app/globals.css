@@ -1707,6 +1707,7 @@ section[id] {
 }
 
 .comparison-material.active {
+  border-top: 3px solid #6e9d3d;
   border-left:3px solid #6e9d3d;
   border-right:3px solid #6e9d3d;
 }
@@ -1737,6 +1738,10 @@ section[id] {
   background:#e3efd7;
   border-left:3px solid #6e9d3d;
   border-right:3px solid #6e9d3d;
+}
+
+.comparison-row:last-child .active {
+  border-bottom:3px solid #6e9d3d;
 }
 
 .comparison-info {
