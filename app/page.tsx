@@ -299,8 +299,7 @@ export default function HomePage() {
           </div>
 
           <div className="hero-visual">
-            <Image src="/images/hero/house-cut.png" alt="Древесное утепление KRASINSUL" fill priority sizes="(max-width:900px) 70vw, 30vw"
-            />
+            <Image src="/images/hero/house-cut.png" alt="Древесное утепление KRASINSUL" fill priority sizes="(max-width: 767px) 92vw, (max-width: 1023px) 60vw, 38vw"/>
           </div>
         </div>
 
@@ -394,12 +393,8 @@ export default function HomePage() {
 
             <div className="material-side">
               <div className="material-photo">
-                <Image
-                  src="/images/material/krasinsul-blowing.png"
-                  alt="Задувной древесный утеплитель"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 42vw"
-                />
+                <Image src="/images/material/krasinsul-blowing.png" alt="Задувной древесный утеплитель" fill 
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 70vw, 42vw" quality={70}/>
               </div>
 
               <div className="material-vapor">
@@ -447,28 +442,28 @@ export default function HomePage() {
 
                   <div className="comparison-material active">
                     <div className="comparison-material-image">
-                      <Image src="/images/comparison/wood-fiber.jpg" alt="Древесное волокно" fill/>
+                      <Image src="/images/comparison/wood-fiber.jpg" alt="Древесное волокно" fill sizes="(max-width: 767px) 180px, 220px" quality={70}/>
                     </div>
                     <span>Древесное волокно</span>
                   </div>
 
                   <div className="comparison-material">
                     <div className="comparison-material-image">
-                      <Image src="/images/comparison/mineral-wool.jpg" alt="Минеральная вата" fill/>
+                      <Image src="/images/comparison/mineral-wool.jpg" alt="Минеральная вата" fill sizes="(max-width: 767px) 180px, 220px" quality={70}/>
                     </div>
                     <span>Минеральная вата</span>
                   </div>
 
                   <div className="comparison-material">
                     <div className="comparison-material-image">
-                      <Image src="/images/comparison/ecowool.jpg" alt="Эковата" fill/>
+                      <Image src="/images/comparison/ecowool.jpg" alt="Эковата" fill sizes="(max-width: 767px) 180px, 220px" quality={70}/>
                     </div>
                     <span>Эковата</span>
                   </div>
 
                   <div className="comparison-material">
                     <div className="comparison-material-image">
-                      <Image src="/images/comparison/xps.jpg" alt="XPS EPS" fill/>
+                      <Image src="/images/comparison/xps.jpg" alt="XPS EPS" fill sizes="(max-width: 767px) 180px, 220px" quality={70}/>
                     </div>
                     <span>XPS/EPS</span>
                   </div>
@@ -489,7 +484,7 @@ export default function HomePage() {
 
           <div className="comparison-info">
             <div className="comparison-photo">
-              <Image src="/images/comparison/photo_wood_fiber.png" alt="Плиты древесного волокна" fill/>
+              <Image src="/images/comparison/photo_wood_fiber.png" alt="Плиты древесного волокна" fill sizes="(max-width: 767px) 100vw, 50vw" quality={70}/>
             </div>
 
             <div className="comparison-benefits">
@@ -557,7 +552,7 @@ export default function HomePage() {
             {applications.slice(0, 4).map((item) => (
               <article className="applications-card" key={item.title}>
                 <div className="applications-card-image">
-                  <Image  src={item.image} alt={item.title} fill sizes="260px"/>
+                  <Image  src={item.image} alt={item.title} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 45vw, 260px"/>
                 </div>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
@@ -569,7 +564,7 @@ export default function HomePage() {
             {applications.map((item) => (
               <article className="applications-card" key={item.title}>
                 <div className="applications-card-image">
-                  <Image  src={item.image} alt={item.title} fill sizes="260px"/>
+                  <Image  src={item.image} alt={item.title} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 45vw, 260px"/>
                 </div>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
@@ -580,7 +575,7 @@ export default function HomePage() {
           <div className="applications-bottom">
             <article className="applications-card applications-card--left">
               <div className="applications-card-image">
-                <Image src={applications[4].image} alt={applications[4].title} fill sizes="260px"/>
+                <Image src={applications[4].image} alt={applications[4].title} fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 45vw, 260px"/>
               </div>
               <h3>{applications[4].title}</h3>
               <p>{applications[4].text}</p>
@@ -588,7 +583,7 @@ export default function HomePage() {
 
             <div className="applications-visual">
               <div className="applications-house">
-                <Image src="/images/applications/house-contour.png" alt="Утепляем весь контур дома" fill sizes="800px"/>
+                <Image src="/images/applications/house-contour.png" alt="Утепляем весь контур дома" fill sizes="(max-width: 767px) 100vw, 60vw" quality={70}/>
                 <h3>Утепляем весь контур дома</h3>
               </div>
             </div>
@@ -607,7 +602,7 @@ export default function HomePage() {
           </div>
 
           <div className="services-background">
-            <Image src="/images/services/background-house.png" alt="" fill sizes="100%"/>
+            <Image src="/images/services/background-house.png" alt="" fill sizes="(max-width: 767px) 100vw, 750px" quality={60}/>
           </div>
 
           <div className="services-grid">
@@ -615,7 +610,7 @@ export default function HomePage() {
               <article className="services-card" key={item.title}>
                 <div className="services-card-image">
                   <div className="services-card-image-inner">
-                    <Image src={item.image} alt={item.title} fill sizes="460px"/>
+                    <Image src={item.image} alt={item.title} fill   sizes="(max-width: 767px) 100vw, (max-width: 1023px) 80vw, 460px" quality={70}/>
                   </div>
                 </div>
 
