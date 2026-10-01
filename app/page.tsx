@@ -69,11 +69,25 @@ const comparisonRows = [
     xps: ">100",
   },
   {
-    title: "Сорбционная влага",
+    title: "Сорбционная влага (RH 80%)",
     wood: "17,9 кг/м²",
     mineral: "0,2 кг/м²",
     ecowool: "~12–16%",
     xps: "~0",
+  },
+  {
+    title: "Горючесть (EN 13501-1)",
+    wood: "E (при антипиренах)",
+    mineral: "A1 (негорючий)",
+    ecowool: "B1–E",
+    xps: "B1–E (с антипиренами)",
+  },
+  {
+    title: "Секвестрация CO₂",
+    wood: "~73–285 кг CO₂eq/м³ ",
+    mineral: "0",
+    ecowool: "~0 (депонирование в бумаге)",
+    xps: "0",
   },
 ];
 
@@ -108,11 +122,13 @@ const applications = [
 const services = [
   {
     image: "/images/services/production.png",
-    title: "Погонажные изделия для каркасного домостроения и отделки",
+    title: "Погонажные изделия для отделки и строгонная доска для каркасного домостроения",
+    href: "https://xn--38-8kcaih3cxai.xn--p1ai/",
   },
   {
     image: "/images/services/house.jpg",
     title: "Комплексное домостроение под ключ",
+    href: "#",
   },
 ];
 
@@ -247,6 +263,10 @@ export default function HomePage() {
       </header>
 
       <section className="hero" id="top">
+
+        <div className="hero-background">
+          <Image src="/images/hero/background-house.png" alt="" fill sizes="900px"/>
+        </div>
         <div className="hero-container">
           <div className="hero-content">
 
@@ -410,49 +430,60 @@ export default function HomePage() {
             <span>тепловую энергию</span>
           </h2>
 
-          <div className="comparison-table-scroll">
-            <div className="comparison-table">
-              <div className="comparison-head">
-                <div></div>
+          <div className="comparison-table-wrap">
+            <div className="comparison-decoration">
+              <Image
+                src="/images/comparison/thermo-decoration.png"
+                alt=""
+                fill
+                sizes="180px"
+              />
+            </div>
 
-                <div className="comparison-material active">
-                  <div className="comparison-material-image">
-                    <Image src="/images/comparison/wood-fiber.jpg" alt="Древесное волокно" fill/>
+            <div className="comparison-table-scroll">
+              <div className="comparison-table">
+                <div className="comparison-head">
+                  <div></div>
+
+                  <div className="comparison-material active">
+                    <div className="comparison-material-image">
+                      <Image src="/images/comparison/wood-fiber.jpg" alt="Древесное волокно" fill/>
+                    </div>
+                    <span>Древесное волокно</span>
                   </div>
-                  <span>Древесное волокно</span>
+
+                  <div className="comparison-material">
+                    <div className="comparison-material-image">
+                      <Image src="/images/comparison/mineral-wool.jpg" alt="Минеральная вата" fill/>
+                    </div>
+                    <span>Минеральная вата</span>
+                  </div>
+
+                  <div className="comparison-material">
+                    <div className="comparison-material-image">
+                      <Image src="/images/comparison/ecowool.jpg" alt="Эковата" fill/>
+                    </div>
+                    <span>Эковата</span>
+                  </div>
+
+                  <div className="comparison-material">
+                    <div className="comparison-material-image">
+                      <Image src="/images/comparison/xps.jpg" alt="XPS EPS" fill/>
+                    </div>
+                    <span>XPS/EPS</span>
+                  </div>
                 </div>
 
-                <div className="comparison-material">
-                  <div className="comparison-material-image">
-                    <Image src="/images/comparison/mineral-wool.jpg" alt="Минеральная вата" fill/>
+                {comparisonRows.map((row) => (
+                  <div className="comparison-row" key={row.title}>
+                    <div>{row.title}</div>
+                    <div className="active">{row.wood}</div>
+                    <div>{row.mineral}</div>
+                    <div>{row.ecowool}</div>
+                    <div>{row.xps}</div>
                   </div>
-                  <span>Минеральная вата</span>
-                </div>
-
-                <div className="comparison-material">
-                  <div className="comparison-material-image">
-                    <Image src="/images/comparison/ecowool.jpg" alt="Эковата" fill/>
-                  </div>
-                  <span>Эковата</span>
-                </div>
-
-                <div className="comparison-material">
-                  <div className="comparison-material-image">
-                    <Image src="/images/comparison/xps.jpg" alt="XPS EPS" fill/>
-                  </div>
-                  <span>XPS/EPS</span>
-                </div>
+                ))}
               </div>
-
-              {comparisonRows.map((row) => (
-                <div className="comparison-row" key={row.title}>
-                  <div>{row.title}</div>
-                  <div className="active">{row.wood}</div>
-                  <div>{row.mineral}</div>
-                  <div>{row.ecowool}</div>
-                  <div>{row.xps}</div>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -583,11 +614,17 @@ export default function HomePage() {
             {services.map((item) => (
               <article className="services-card" key={item.title}>
                 <div className="services-card-image">
-                  <Image src={item.image} alt={item.title} fill sizes="460px"/>
+                  <div className="services-card-image-inner">
+                    <Image src={item.image} alt={item.title} fill sizes="460px"/>
+                  </div>
                 </div>
 
                 <h3>{item.title}</h3>
-                <a href="#">Открыть страницу</a>
+                <a href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+                  Открыть страницу
+                </a>
               </article>
             ))}
           </div>

@@ -371,7 +371,6 @@ section[id] {
   }
 }
 
-
 /* =========================================================
    Главный экран
    ========================================================= */
@@ -384,100 +383,69 @@ section[id] {
   overflow:hidden;
 }
 
+/* фоновый дом */
+.hero-background {
+  position: absolute;
+  z-index: 0;
+  width: 850px;
+  height: 600px;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.hero-background img {
+  object-fit: contain;
+}
 
 .hero-container {
-
   width:min(1180px, calc(100% - 48px));
-
   margin:0 auto;
-
   display:grid;
-
   grid-template-columns:0.9fr 1.1fr;
-
   gap:40px;
-
   align-items:center;
-
 }
-
 
 .hero-content {
-
   max-width:540px;
-
 }
-
-
 
 .hero-label {
-
   margin:0 0 12px;
-
   font-size:18px;
-
   line-height:1.35;
-
   color:#333;
-
 }
-
-
 
 .hero h1 {
-
   margin:0;
-
   font-size:clamp(38px,4vw,56px);
-
   line-height:1.02;
-
   font-weight:800;
-
   letter-spacing:-0.04em;
-
   text-transform:uppercase;
-
 }
-
-
 
 .hero h1 span {
-
   color:#5d8d32;
-
 }
-
-
 
 .hero-location {
-
   margin:14px 0 34px;
-
   font-size:21px;
-
 }
-
-
 
 .hero-info {
-
   display:grid;
-
   gap:20px;
-
 }
 
-
-
 .hero-info-item {
-
   display:flex;
-
   gap:16px;
-
   align-items:flex-start;
-
 }
 
 .hero-info-icon {
@@ -492,103 +460,56 @@ section[id] {
 .hero-info-icon img {
   width:40px;
   height:40px;
-  object-fit:contain;
+ object-fit:contain;
 }
 
 .hero-info-item p {
-
   margin:0;
-
   max-width:420px;
-
   font-size:15px;
-
   line-height:1.45;
-
 }
-
-
 
 .hero-info-item strong {
-
   display:block;
-
   font-weight:700;
-
 }
-
-
 
 .hero-visual {
-
   position:relative;
-
   height:500px;
-
 }
-
-
 
 .hero-visual img {
-
   object-fit:contain;
-
 }
-
-
 
 .hero-features {
-
   width:min(1000px, calc(100% - 48px));
-
   margin:40px auto 0;
-
   display:grid;
-
   grid-template-columns:1fr 1fr;
-
   gap:22px 70px;
-
 }
-
-
 
 .hero-feature {
-
   border-left:3px solid #5d8d32;
-
   padding-left:14px;
-
 }
-
-
 
 .hero-feature strong {
-
   display:block;
-
   color:#5d8d32;
-
   font-size:15px;
-
   line-height:1.2;
-
   margin-bottom:5px;
-
 }
 
-
-
 .hero-feature span {
-
   display:block;
-
   color:#333;
-
   font-size:14px;
-
   line-height:1.4;
-
 }
 
 /* =========================================================
@@ -599,6 +520,14 @@ section[id] {
 @media (max-width:1439px) and (min-width:1024px) {
   .hero {
     padding-top:85px;
+  }
+
+  .hero-background {
+    width:760px;
+    height:540px;
+    left:50%;
+    top:90px;
+    transform:translateX(-50%);
   }
 
   .hero-container {
@@ -646,6 +575,14 @@ section[id] {
 .hero {
   padding:80px 0 40px;
 }
+
+  .hero-background {
+    width:650px;
+    height:470px;
+    left:50%;
+    top:70px;
+    transform:translateX(-50%);
+  }
 
 /* контейнер */
 .hero-container {
@@ -753,6 +690,14 @@ section[id] {
 @media (max-width:767px) {
   .hero {
     padding:78px 0 25px;
+  }
+
+  .hero-background {
+    width:430px;
+    height:330px;
+    left:50%;
+    top:100px;
+    transform:translateX(-50%);
   }
 
   .hero-container {
@@ -1644,6 +1589,8 @@ section[id] {
 }
 
 .comparison-table-scroll {
+  position: relative;
+  z-index: 1;
   scrollbar-width:thin;
 }
 
@@ -1656,21 +1603,24 @@ section[id] {
   border-radius:10px;
 }
 
-
+/* декоративный градусник слева сверху */
 .comparison-decoration {
-  position:absolute;
-  left:-80px;
-  top:20px;
-  width:100px;
-  height:100px;
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  left: -95px;
+  top: -45px;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .comparison-decoration img {
-  object-fit:contain;
-  opacity:.25;
+  object-fit: contain;
 }
 
 .comparison-table {
+  position: relative;
+  z-index: 1;
   width:100%;
   border-radius:5px;
   overflow:hidden;
@@ -1902,6 +1852,13 @@ section[id] {
    ========================================================= */
 
 @media (max-width:1439px) and (min-width:1024px) {
+  .comparison-decoration {
+    width:320px;
+    height:320px;
+    left:-60px;
+    top:-30px;
+  }
+
   .comparison-info {
     width:calc(100%);
     margin:35px auto 0;
@@ -1977,6 +1934,13 @@ section[id] {
 .comparison {
   padding:50px 0 60px;
 }
+
+  .comparison-decoration {
+    width:300px;
+    height:300px;
+    left:-25px;
+    top:-20px;
+  }
 
 /* заголовок */
 .comparison-title {
@@ -2109,6 +2073,14 @@ section[id] {
   line-height:1.15;
   letter-spacing:-0.03em;
 }
+
+  .comparison-decoration {
+    width:200px;
+    height:200px;
+    left:-35px;
+    top:-20px;
+  }
+
 /* таблица */
 .comparison-table-scroll {
   width:calc(100%);
@@ -2596,18 +2568,24 @@ section[id] {
 }
 
 .services-card-image {
-  position:relative;
-  width:460px;
-  height:310px;
-  border:1.5px solid #6e9d3d;
-  border-radius:42px;
-  padding:18px;
-  overflow:hidden;
+  position: relative;
+  width: 460px;
+  height: 310px;
+  border: 1.5px solid #6e9d3d;
+  border-radius: 42px;
+  overflow: hidden;
+  background: #fff;
 }
 
-.services-card-image img {
-  object-fit:cover;
-  border-radius:24px;
+.services-card-image-inner {
+  position: absolute;
+  inset: 22px; /* расстояние от зелёной рамки */
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.services-card-image-inner img {
+  object-fit: cover;
 }
 
 .services-card h3 {
@@ -2632,9 +2610,8 @@ section[id] {
   width:750px;
   height:430px;
   left:50%;
-  bottom:70px;
+  bottom:20px;
   transform:translateX(-50%);
-  opacity:.15;
 }
 
 .services-background img {
@@ -2699,6 +2676,10 @@ section[id] {
 .services {
   padding:50px 0 60px;
 }
+
+  .services-background {
+    display:none;
+  }
 
 .services-header {
   width:calc(100% - 48px);
@@ -2777,6 +2758,10 @@ section[id] {
 .services {
   padding:35px 0 45px;
 }
+
+.services-background {
+    display:none;
+  }
 
 .services-header {
   width:calc(100% - 48px);
