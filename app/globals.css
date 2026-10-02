@@ -2094,7 +2094,7 @@ section[id] {
 
 .comparison-head,
 .comparison-row {
-  grid-template-columns:110px repeat(4,1fr);
+  grid-template-columns:125px repeat(4,1fr);
 }
 
 .comparison-material-image {
